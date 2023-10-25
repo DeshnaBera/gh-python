@@ -1,4 +1,4 @@
-def add_numbers(a, b)
+def add_numbers(a, b):
     return a + b
 
 num1 = 12
