@@ -4,4 +4,4 @@ def add_numbers(a, b):
 num1 = 12
 num2 = 13
 result = add_numbers(num1, num2)
-print("The sum of "+ num1 + " and " + num2 + " is " + result)
+print(f"The sum of {num1} and {num2} is {result}")
