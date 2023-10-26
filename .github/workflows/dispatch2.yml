@@ -1,0 +1,22 @@
+name: Calling CalculateSum
+
+on:
+  workflow_dispatch:
+    inputs:
+      num1:
+        description: 'First Number'
+        required: true
+      num2:
+        description: 'Second Number'
+        required: true
+
+jobs:
+  call-calculatesum:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call Calculate Sum Workflow
+        uses: DeshnaBera/gh-python/.github/workflows/callable.yml
+        with:
+          num1: ${{ github.event.inputs.num1 }}
+          num2: ${{ github.event.inputs.num2 }}
