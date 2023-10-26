@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Call Calculate Sum Workflow
-        uses: DeshnaBera/gh-python/.github/workflows/callable.yml
+        uses: ./.github/workflows/callable.yml
         with:
           num1: ${{ github.event.inputs.num1 }}
           num2: ${{ github.event.inputs.num2 }}
