@@ -19,8 +19,8 @@ jobs:
           python-version: '3.10'
       - name: Run Python Script
         run: python sum.py
-      - name: Call Calculate Sum Workflow
-        uses: ./github/workflows/callable.yml
-        with:
-          num1: 11
-          num2: 12
+  call-callable:
+      uses: ./.github/workflows/callable.yml
+      with:
+        num1: 11
+        num2: 12
