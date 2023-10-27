@@ -20,7 +20,7 @@ jobs:
       - name: Run Python Script
         run: python sum.py
       - name: Call Calculate Sum Workflow
-        uses: ./.github/workflows/callable.yml
+        uses: ./callable.yml
         with:
           num1: 11
           num2: 12
