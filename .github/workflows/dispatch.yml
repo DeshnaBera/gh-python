@@ -11,7 +11,7 @@ on:
         required: true
 
 jobs:
-  call-calculatesum:
+  calculate-sum:
     runs-on: ubuntu-latest
 
   #  steps:
