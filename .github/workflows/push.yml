@@ -22,5 +22,5 @@ jobs:
   call-callable:
     uses: ./.github/workflows/callable.yml
     with:
-      num1: 11
+      num1: 20
       num2: 12
