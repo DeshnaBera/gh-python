@@ -14,10 +14,10 @@ on:
 
 jobs:
   call-callable:
-  uses: ./.github/workflows/callable.yml
-  with:
-    num1: ${{ github.event.inputs.num1 }}
-    num2: ${{ github.event.inputs.num2 }}
+    uses: ./.github/workflows/callable.yml
+    with:
+      num1: ${{ github.event.inputs.num1 }}
+      num2: ${{ github.event.inputs.num2 }}
 
  #   steps:
  #     - name: Checkout Code
