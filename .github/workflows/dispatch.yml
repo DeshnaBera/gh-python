@@ -22,7 +22,9 @@ on:
 jobs:
   calculate-sum:
     runs-on: ubuntu-latest
-    
+    outputs:
+      sum_value: ${{ steps.run-python.outputs.sum_value }}
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -33,4 +35,17 @@ jobs:
           python-version: '3.10'
 
       - name: Run Python Script
-        run: python sum.py ${{ github.event.inputs.num1 }} ${{ github.event.inputs.num2 }}
+        id: run-python
+        run: |
+          sum_value=$(python sum.py ${{ github.event.inputs.num1 }} ${{ github.event.inputs.num2 }})
+          echo "::set-output name=sum_value::$sum_value"
+
+  print_sum:
+    runs-on: ubuntu-latest
+    needs: calculate-sum
+
+    steps:
+      - name: Use Sum Value
+        run: |
+          print_sum="${{ needs.calculate-sum.outputs.sum_value }}"
+          echo "Sum value : $print_sum"
