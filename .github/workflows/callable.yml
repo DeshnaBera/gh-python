@@ -6,9 +6,11 @@ on:
       num1:
         description: 'First Number'
         required: true
+        type: Number
       num2:
         description: 'Second Number'
         required: true
+        type: Number
 
 jobs:
   run-python:
