@@ -6,11 +6,11 @@ on:
       num1:
         description: 'First Number'
         required: true
-        type: number
+      #  type: number
       num2:
         description: 'Second Number'
         required: true
-        type: number
+      #  type: number
 
 jobs:
   call-callable:
