@@ -1,0 +1,36 @@
+name: Passing Value within Steps Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      num1:
+        description: 'First Number'
+        required: true
+        type: number
+      num2:
+        description: 'Second Number'
+        required: true
+        type: number
+
+
+jobs:
+  run_python:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Calculate Sum
+        run: |
+          result=$(python sum.py ${{ github.event.inputs.num1 }} ${{ github.event.inputs.num2 }})
+          echo "SUM_RESULT=$result" >> $GITHUB_ENV
+
+      - name: Print Sum
+        run: |
+          echo "The Sum Result = $SUM_RESULT"
