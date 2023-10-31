@@ -41,5 +41,5 @@ jobs:
     steps:
       - name: Use Sum Value
         run: |
-          print_sum="${{ needs.calculate-sum.outputs.sum_value }}"
+          print_sum="${{ needs.calculate_sum.outputs.sum_value }}"
           echo "Sum value : $print_sum"
