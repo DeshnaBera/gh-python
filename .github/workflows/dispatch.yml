@@ -16,8 +16,8 @@ jobs:
   call-callable:
     uses: ./.github/workflows/callable.yml
     with:
-      num1: ${{ github.event.inputs.num1 }}
-      num2: ${{ github.event.inputs.num2 }}
+      num1: ${{ inputs.num1 }}
+      num2: ${{ inputs.num2 }}
 
 # jobs:
 #  calculate-sum:
