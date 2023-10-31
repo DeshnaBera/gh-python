@@ -1,0 +1,45 @@
+name: Passing Value Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      num1:
+        description: 'First Number'
+        required: true
+        type: number
+      num2:
+        description: 'Second Number'
+        required: true
+        type: number
+
+
+jobs:
+  calculate_sum:
+    runs-on: ubuntu-latest
+    outputs:
+      sum_value: ${{ steps.run-python.outputs.sum_value }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Run Python Script
+        id: run-python
+        run: |
+          sum_value=$(python sum.py ${{ github.event.inputs.num1 }} ${{ github.event.inputs.num2 }})
+          echo "::set-output name=sum_value::$sum_value"
+
+  print_sum:
+    runs-on: ubuntu-latest
+    needs: calculate_sum
+
+    steps:
+      - name: Use Sum Value
+        run: |
+          print_sum="${{ needs.calculate-sum.outputs.sum_value }}"
+          echo "Sum value : $print_sum"
