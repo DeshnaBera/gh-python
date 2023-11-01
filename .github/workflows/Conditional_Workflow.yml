@@ -19,9 +19,9 @@ jobs:
           python-version: '3.10'
 
       - name: Run Python Script
+        continue-on-error: true
         id: run-script
         run: python sum.py
-        continue-on-error: true
   
   conditional-job-1:
     needs: run-python
