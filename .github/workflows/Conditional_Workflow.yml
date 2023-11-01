@@ -25,7 +25,7 @@ jobs:
   
   conditional-job-1:
     needs: run-python
-    if: ${{ steps.run-script.outputs.outcome == 'success' }}
+    if: ${{ steps.run-script.outputs.code == '0' }}
     runs-on: ubuntu-latest
     
     steps: 
@@ -34,7 +34,7 @@ jobs:
 
   conditional-job-2:
     needs: run-python
-    if: ${{ steps.run-script.outputs.outcome != 'failure' }}
+    if: ${{ steps.run-script.outputs.code != '1' }}
     runs-on: ubuntu-latest
 
     steps: 
