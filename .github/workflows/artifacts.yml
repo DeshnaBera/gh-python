@@ -1,0 +1,53 @@
+name: Creating Artifacts
+
+on:
+  workflow_dispatch:
+    inputs:
+      num1:
+        description: 'First Number'
+        required: true
+        type: number
+      num2:
+        description: 'Second Number'
+        required: true
+        type: number
+
+
+jobs:
+  calculate_sum:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Calculate Sum
+        run: |
+          result=$(python sum.py ${{ github.event.inputs.num1 }} ${{ github.event.inputs.num2 }})
+          echo "SUM_RESULT=$result" > sum_result.txt
+
+      - name: Upload Artifact
+        uses: actions/upload-artifacts@v3
+        with:
+          name: result-artifact
+          path: sum_result.txt
+
+  print_sum:
+    runs-on: ubuntu-latest
+    needs: calculate_sum
+
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: result-artifact
+
+      - name: Use Sum Value
+        run: |
+          result=$(cat sum_result.txt)
+          echo "Sum value : $result"
