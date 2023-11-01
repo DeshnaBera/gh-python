@@ -25,19 +25,19 @@ jobs:
   
   conditional-job-1:
     needs: run-python
-    runs-on: ubuntu-latest
     if: ${{ steps.run-script.outputs.code == '0' }}
-
+    runs-on: ubuntu-latest
+    
     steps: 
       - name: Conditional Job1
         run: echo "Job 1 is running"
 
   conditional-job-2:
     needs: run-python
-    runs-on: ubuntu-latest
     if: ${{ steps.run-script.outputs.code != '0' }}
+    runs-on: ubuntu-latest
 
     steps: 
       - name: Conditional Job2
-        run: echo "Job 1 is running"
+        run: echo "Job 2 is running"
   
