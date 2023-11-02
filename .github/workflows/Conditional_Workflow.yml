@@ -26,7 +26,7 @@ jobs:
           python-version: '3.10'
 
       - name: Run Python Script
-        continue-on-error: true
+      #  continue-on-error: true
         id: run-script
         run: python sum.py ${{ github.event.inputs.num1 }} ${{ github.event.inputs.num2 }}
 
@@ -35,6 +35,6 @@ jobs:
         run: echo "step 1 is running"
 
       - name: Conditional step2
-        if: success()
+        if: success() 
         run: echo "step 2 is running"
 
