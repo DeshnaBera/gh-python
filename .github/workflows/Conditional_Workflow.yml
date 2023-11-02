@@ -45,6 +45,6 @@ jobs:
 
     steps: 
       - name: Conditional Job2
-        if: ${{ steps.run-script.outputs.code != '0' }}
+        if: ${{ steps.run-script.outputs.code == '1' }}
         run: echo "Job 2 is running"
   
