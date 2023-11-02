@@ -45,7 +45,7 @@ jobs:
 
       steps:
         - name: Conditional job1
-          run: echo "Conditional job 1 is running"
+          run: echo "failure job is running"
 
   conditional-job-2:
     needs: run-python
@@ -54,4 +54,4 @@ jobs:
 
       steps:
         - name: Conditional job2
-          run: echo "Conditional job 2 is running"
+          run: echo "Success job is running"
