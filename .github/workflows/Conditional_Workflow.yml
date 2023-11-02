@@ -1,9 +1,16 @@
 name: Conditional Workflow
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+    inputs:
+      num1:
+        description: 'First Number'
+        required: true
+        type: number
+      num2:
+        description: 'Second Number'
+        required: true
+        type: number
 
 jobs:
   run-python:
@@ -21,11 +28,10 @@ jobs:
       - name: Run Python Script
       #  continue-on-error: true
         id: run-script
-        run: python sum.py
+        run: python sum.py ${{ github.event.inputs.num1 }} ${{ github.event.inputs.num2 }}
   
   conditional-job-1:
     needs: run-python
-    
     runs-on: ubuntu-latest
     
     steps: 
@@ -35,7 +41,6 @@ jobs:
 
   conditional-job-2:
     needs: run-python
-    
     runs-on: ubuntu-latest
 
     steps: 
