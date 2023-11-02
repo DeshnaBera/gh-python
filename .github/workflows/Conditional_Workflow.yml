@@ -37,7 +37,7 @@ jobs:
     
     steps: 
       - name: Conditional Job1
-        if: steps.run-script.outcome == 'success' }}
+        if: steps.run-script.outcome == 'success'
         run: echo "Job 1 is running"
 
   conditional-job-2:
@@ -47,6 +47,6 @@ jobs:
 
     steps: 
       - name: Conditional Job2
-        if: steps.run-script.outcome == 'failure' }}
+        if: steps.run-script.outcome == 'failure'
         run: echo "Job 2 is running"
   
