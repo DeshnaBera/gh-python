@@ -6,5 +6,5 @@ def add_numbers(a, b):
 if len(sys.argv) == 3:
         num1 = int(sys.argv[1])
         num2 = int(sys.argv[2])
-        result = add_numbers(num1, num)
+        result = add_numbers(num1, num2)
         print(result)
