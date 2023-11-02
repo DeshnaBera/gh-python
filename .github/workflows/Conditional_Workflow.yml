@@ -32,21 +32,19 @@ jobs:
   
   conditional-job-1:
     needs: run-python
-  #  if: ${{ needs.run-python.outputs.code == '0' }}
+    if: failure() 
     runs-on: ubuntu-latest
     
     steps: 
       - name: Conditional Job1
-        if: failure() 
         run: echo "Job 1 is running"
 
   conditional-job-2:
     needs: run-python
-  #  if: ${{ needs.run-python.outputs.code != '0' }}
+    if: success()
     runs-on: ubuntu-latest
 
     steps: 
       - name: Conditional Job2
-        if: success()
         run: echo "Job 2 is running"
   
