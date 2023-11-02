@@ -30,9 +30,9 @@ jobs:
         id: run-script
         run: python sum.py ${{ github.event.inputs.num1 }} ${{ github.event.inputs.num2 }}
 
-      - name: Conditional step1
-        if: failure() && steps.run-script.outcome == 'failure'
-        run: echo "step 1 is running"
+      #- name: Conditional step1
+      #  if: failure() && steps.run-script.outcome == 'failure'
+      #  run: echo "step 1 is running"
 
       #- name: Conditional step2
       #  if: success() 
