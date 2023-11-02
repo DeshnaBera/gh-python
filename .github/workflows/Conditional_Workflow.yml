@@ -42,7 +42,7 @@ jobs:
 
   conditional-job-2:
     needs: run-python
-    if: ${{ needs.run-python.outputs.code == 'False' }}
+    if: ${{ needs.run-python.outputs.code != 'True' }}
     runs-on: ubuntu-latest
 
     steps: 
