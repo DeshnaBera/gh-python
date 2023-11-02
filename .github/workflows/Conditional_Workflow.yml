@@ -43,15 +43,15 @@ jobs:
     if: failure()
     runs-on: ubuntu-latest
 
-      steps:
-        - name: Conditional job1
-          run: echo "failure job is running"
+    steps:
+      - name: Conditional job1
+        run: echo "failure job is running"
 
   conditional-job-2:
     needs: run-python
     if: success()
     runs-on: ubuntu-latest
 
-      steps:
-        - name: Conditional job2
-          run: echo "Success job is running"
+    steps:
+      - name: Conditional job2
+        run: echo "Success job is running"
