@@ -31,10 +31,27 @@ jobs:
         run: python sum.py ${{ github.event.inputs.num1 }} ${{ github.event.inputs.num2 }}
 
       - name: Conditional step1
-        if: failure() 
+        if: failure() && steps.run-script.outcome == 'failure'
         run: echo "step 1 is running"
 
-      - name: Conditional step2
-        if: success() 
-        run: echo "step 2 is running"
+      #- name: Conditional step2
+      #  if: success() 
+      #  run: echo "step 2 is running"
+  
+  conditional-job-1:
+    needs: run-python
+    if: failure()
+    runs-on: ubuntu-latest
 
+      steps:
+        - name: Conditional job1
+          run: echo "Conditional job 1 is running"
+
+  conditional-job-2:
+    needs: run-python
+    if: success()
+    runs-on: ubuntu-latest
+
+      steps:
+        - name: Conditional job2
+          run: echo "Conditional job 2 is running"
