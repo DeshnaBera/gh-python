@@ -29,24 +29,13 @@ jobs:
         continue-on-error: true
         id: run-script
         run: python sum.py ${{ github.event.inputs.num1 }} ${{ github.event.inputs.num2 }}
-  
-  conditional-job-1:
-    needs: run-python
-  #  if: ${{ needs.run-python.outputs.code == '0' }}
-    runs-on: ubuntu-latest
-    
-    steps: 
-      - name: Conditional Job1
+
+      - name: Conditional step1
         if: failure() 
-        run: echo "Job 1 is running"
+        run: echo "step 1 is running"
 
-  conditional-job-2:
-    needs: run-python
-  #  if: ${{ needs.run-python.outputs.code != '0' }}
-    runs-on: ubuntu-latest
-
-    steps: 
-      - name: Conditional Job2
+      - name: Conditional step2
         if: success()
-        run: echo "Job 2 is running"
+        run: echo "step 2 is running"
+
   
