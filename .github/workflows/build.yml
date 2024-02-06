@@ -22,11 +22,9 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
       
-      - name: Set Outputs
-        id: set-outputs
+      - name: Get Outputs
         run: |
-          echo "::set-output name=docker_username::$(echo ${{ steps.login-ecr.outputs.registry }}/python-app)"
-          echo "::set-output name=docker_password::$(aws ecr get-login-password --region us-east-1)"
+          aws ecr get-login
  
       - name: Build, tag and push image to Amazon ECR
         env:
