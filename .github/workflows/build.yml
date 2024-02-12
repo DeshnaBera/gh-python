@@ -5,7 +5,6 @@ on:
       - master
 jobs:
   build_image:
-    container: amazon/aws-cli:latest
     runs-on: ubuntu-latest
  
     steps:
@@ -31,7 +30,3 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        
-      - name: Run Docker image
-        run: |
-          docker run -d -p 80:80 $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
