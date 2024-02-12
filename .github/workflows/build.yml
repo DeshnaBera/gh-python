@@ -5,6 +5,7 @@ on:
       - master
 jobs:
   build_image:
+    container: amazon/aws-cli:latest
     runs-on: ubuntu-latest
  
     steps:
